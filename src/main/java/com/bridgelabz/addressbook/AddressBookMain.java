@@ -1,46 +1,69 @@
 package com.bridgelabz.addressbook;
 
+import java.util.Scanner;
+
 public class AddressBookMain {
-	private String firstName;
-	private String lastName;
-	private String address;
-	private String city;
-	private String state;
-	private int zip;
-	private String phoneNumber;
-	private String email;
 
-	public AddressBookMain(String firstName, String lastName, String address, String city, String state, int zip,
-			String phoneNumber, String email) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-		this.phoneNumber = phoneNumber;
-		this.email = email;
-	}
+	static Scanner sc = new Scanner(System.in);
+	static ContactFunctions contactFunctions = new ContactFunctions();
 
-	public void contactsList() {
-
-		System.out.println("firstname: " + firstName);
-		System.out.println("lastname: " + lastName);
-		System.out.println("address: " + address);
-		System.out.println("city: " + city);
-		System.out.println("state: " + state);
-		System.out.println("zip: " + zip);
-		System.out.println("phoneNumber: " + phoneNumber);
-		System.out.println("email: " + email);
-
-	}
-
+	// Main method
 	public static void main(String[] args) {
 
-		System.out.println("Welcome to the Address book program");
-		AddressBookMain contact = new AddressBookMain("Daxil", "Saxena", "RajNagar", "Ghaziabad", "UttarPradesh",
-				201001, "9999999999", "abc@gmail.com");
-		contact.contactsList();
+		System.out.println("Welcome to the Address book program"); // Welcome statement
+		AddressBookMain addressBookMain = new AddressBookMain();
+		addressBookMain.addContactList();
 	}
 
+	public void addContact() {
+
+		ContactItems contactItems = new ContactItems();
+
+		System.out.println("Enter first name : ");
+		contactItems.firstName = sc.next();
+
+		System.out.println("Enter last name : ");
+		contactItems.lastName = sc.next();
+
+		System.out.println("Enter address : ");
+		contactItems.address = sc.next();
+		sc.nextLine();
+
+		System.out.println("Enter city : ");
+		contactItems.city = sc.next();
+
+		System.out.println("Enter state : ");
+		contactItems.state = sc.next();
+
+		System.out.println("Enter zip code : ");
+		contactItems.zip = sc.nextInt();
+
+		System.out.println("Enter phone number : ");
+		contactItems.phoneNumber = sc.next();
+
+		System.out.println("Enter email : ");
+		contactItems.email = sc.next();
+
+		contactFunctions.add(contactItems);
+
+	}
+
+	public void addContactList() {
+		while (true) {
+			System.out.println("1. Display all contacts");
+			System.out.println("2. Add contact");
+			int option = sc.nextInt();
+
+			switch (option) {
+			case 1:
+				contactFunctions.display();
+				break;
+			case 2:
+				addContact();
+				break;
+			default:
+				break;
+			}
+	}
+}
 }
