@@ -1,19 +1,21 @@
 package com.bridgelabz.addressbook;
 
-import java.util.HashSet;
 import java.util.*;
 
 public class ContactFunctions {
-	Set<ContactItems> contactList = new HashSet<>();
 
-	public void add(ContactItems contactItems) {
+	public void add(ContactItems contactItems, ArrayList<ContactItems> contactList) {
+
 		contactList.add(contactItems);
 	}
 
-	public void display() {
-		Iterator iterator = contactList.iterator();
-		while (iterator.hasNext()) {
-			System.out.println(iterator.next());
+	public void edit(ContactItems contactItems) {
+
+	}
+
+	public void display(ArrayList<ContactItems> contactList) {
+		for (ContactItems contactItems : contactList) {
+			System.out.println(contactItems);
 		}
 	}
 }
